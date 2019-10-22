@@ -60,8 +60,7 @@ function App() {
 }
 
 const Wrapper = styled.div`
-  /* background-color: #E54A4E; */
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-color: #E54A4E;
   min-height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;

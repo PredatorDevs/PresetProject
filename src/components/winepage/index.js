@@ -1,217 +1,91 @@
 import React from 'react';
 import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
-import vinos from '../../assets/img/wines/vinosoriente.jpeg'
-
-const useStyles = makeStyles({
-    card: {
-        maxWidth: 345,
-        backgroundColor: 'white'
-    },
-    media: {
-        height: 140,
-    },
-});
+import companysInfo from './data/companys';
 
 export default function WinePage() {
-    const classes = useStyles();
-
     return (
-        <div>
-            <CardContainer>
-                <div className="item1">
-                <Card className={classes.card}>
-                    <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image={vinos}
-                            title="Vinos de Oriente"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Vinos de Oriente
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Nuestro primer cliente satisfecho. Vinos de la mejor calidad y al mejor precio
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Saber más
-                        </Button>
-                        <Button size="small" color="primary">
-                            Contactar
-                        </Button>
-                    </CardActions>
-                </Card>
-                </div>
-                <div className="item2">
-                <Card className={classes.card}>
-                    <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image={vinos}
-                            title="Vinos de Oriente"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Vinos de Oriente
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Nuestro primer cliente satisfecho. Vinos de la mejor calidad y al mejor precio
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Saber más
-                        </Button>
-                        <Button size="small" color="primary">
-                            Contactar
-                        </Button>
-                    </CardActions>
-                </Card>
-                </div>
-                <div className="item3">
-                <Card className={classes.card}>
-                    <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image={vinos}
-                            title="Vinos de Oriente"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Vinos de Oriente
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Nuestro primer cliente satisfecho. Vinos de la mejor calidad y al mejor precio
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Saber más
-                        </Button>
-                        <Button size="small" color="primary">
-                            Contactar
-                        </Button>
-                    </CardActions>
-                </Card>
-                </div>
-            </CardContainer>
-            <CardContainer>
-                <div className="item1">
-                <Card className={classes.card}>
-                    <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image={vinos}
-                            title="Vinos de Oriente"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Vinos de Oriente
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Nuestro primer cliente satisfecho. Vinos de la mejor calidad y al mejor precio
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Saber más
-                        </Button>
-                        <Button size="small" color="primary">
-                            Contactar
-                        </Button>
-                    </CardActions>
-                </Card>
-                </div>
-                <div className="item2">
-                <Card className={classes.card}>
-                    <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image={vinos}
-                            title="Vinos de Oriente"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Vinos de Oriente
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Nuestro primer cliente satisfecho. Vinos de la mejor calidad y al mejor precio
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Saber más
-                        </Button>
-                        <Button size="small" color="primary">
-                            Contactar
-                        </Button>
-                    </CardActions>
-                </Card>
-                </div>
-                <div className="item3">
-                <Card className={classes.card}>
-                    <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image={vinos}
-                            title="Vinos de Oriente"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Vinos de Oriente
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Nuestro primer cliente satisfecho. Vinos de la mejor calidad y al mejor precio
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Saber más
-                        </Button>
-                        <Button size="small" color="primary">
-                            Contactar
-                        </Button>
-                    </CardActions>
-                </Card>
-                </div>
-            </CardContainer>
-        </div>
+        <CardContainer>
+            {
+                companysInfo.map((elm) => {
+                    console.log(elm);
+                    return (
+                        <div key={elm.id} className='card-main'>
+                            <img className='card-image' src={elm.portada}/>
+                            <p className='card-title'>
+                                {elm.nombre}
+                            </p>
+                            <p className='card-descrip'>
+                                {elm.descrip}
+                            </p>
+                        </div>
+                    )
+                })
+            }
+        </CardContainer>
 
     );
 }
 
 const CardContainer = styled.div`
-    margin-top: 30px;
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(1, auto);
-    grid-template-areas: "item1 item2 item3";
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    .card-main {
+        background-color: white;
+        width: 400px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 0.2s;
+        :hover {
+            background-color: #B2E6E5;
+            width: 420px;
+            .card-image {
+                width: 420px;
+            }
+        }
+    }
 
-    .item1 {
-        grid-area: item1
+    .card-image {
+        width: 400px;
+        height: 200px;
+        transition: 0.2s;
     }
-    .item2 {
-        grid-area: item2
+
+    .card-title {
+        color: black;
+        font-size: 18px;
+        font-weight: bolder;
+        margin: 5px;
     }
-    .item3 {
-        grid-area: item3
+
+    .card-descrip {
+        color: black;
+        font-size: 15px;
+        margin: 10px;
+        text-align: justify
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        .card-main {
+            width: 300px;
+            :hover {
+            background-color: #B2E6E5;
+            width: 320px;
+            .card-image {
+                width: 320px;
+            }
+            }
+        }
+        .card-image {
+            width: 300px;
+            height: 100px;
+        }
     }
 `
