@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
+import ReactNotification from 'react-notifications-component'
 import './App.css';
 
 import { Navbar } from './Navbar'; // 192.168.0.12:3000
@@ -55,6 +56,7 @@ function App() {
           />
         </Switch>
       </Wrapper>
+      <ReactNotification />
     </div>
   );
 }

@@ -155,7 +155,7 @@ const Wrapper = styled.div`
       margin: 0;
     }
     :hover {
-      background-color: #28292F;
+      background-color: #20262C;
       cursor: pointer;
     }
   }
