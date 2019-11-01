@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ToolBar from '../../global/toolbar/index';
+import { Review } from '../../global/review/index';
 import { showNotification } from '../../customNotifications';
 import companysInfo from './data/companys';
 
@@ -12,6 +13,8 @@ class TransportPage extends React.Component {
             wWidth: undefined,
             wHeigth: undefined,
             sliceIndx: 0,
+            openViewer: false,
+            nameShowing: '',
         }
     }
 
@@ -25,8 +28,23 @@ class TransportPage extends React.Component {
     componentWillUnmount() {
     }
 
+    toggleViewer = () => {
+        const { openViewer } = this.state;
+        this.setState({
+            openViewer: !openViewer,
+        })
+    }
+
+    setName = (name) => {
+        console.log(name);
+        this.setState({
+            nameShowing: name,
+        })
+        this.toggleViewer();
+    }
+
     render(){
-        const { sliceIndx } = this.state;
+        const { sliceIndx, openViewer, nameShowing } = this.state;
         return (
             <Wrapper>
                 <ToolBar />
@@ -44,7 +62,7 @@ class TransportPage extends React.Component {
                                             {elm.descrip}
                                         </p>
                                         <div className='card-buttons-cont'>
-                                            <button className='button-more-info' onClick={() => {  showNotification("info", "Solicitando información", `Llamando a: ${elm.nombre}`); }}>Más información</button>
+                                            <button className='button-more-info' onClick={() => this.setName(elm.nombre)}>Más información</button>
                                         </div>
                                     </div>
                                 )
@@ -64,7 +82,7 @@ class TransportPage extends React.Component {
                                             {elm.descrip}
                                         </p>
                                         <div className='card-buttons-cont'>
-                                            <button className='button-more-info' onClick={() => {  showNotification("info", "Solicitando información", `Llamando a: ${elm.nombre}`); }}>Más información</button>
+                                            <button className='button-more-info' onClick={this.toggleViewer}>Más información</button>
                                         </div>
                                     </div>
                                 )
@@ -84,7 +102,7 @@ class TransportPage extends React.Component {
                                             {elm.descrip}
                                         </p>
                                         <div className='card-buttons-cont'>
-                                            <button className='button-more-info' onClick={() => {  showNotification("info", "Solicitando información", `Llamando a: ${elm.nombre}`); }}>Más información</button>
+                                            <button className='button-more-info' onClick={this.toggleViewer}>Más información</button>
                                         </div>
                                     </div>
                                 )
@@ -92,6 +110,12 @@ class TransportPage extends React.Component {
                         }
                     </CardContainer>
                 </CardsContainer>
+                <Review
+                    type="company"
+                    data={nameShowing}
+                    open={openViewer}
+                    handleClose={this.toggleViewer}
+                />
             </Wrapper>
         );
     }
