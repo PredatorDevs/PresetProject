@@ -57,6 +57,7 @@ export const Content = ({
 );
 
 const Wrapper = styled.div`
+  background-color: skyblue;
   .simple-content-wrapper {
     p {
       margin: 0;

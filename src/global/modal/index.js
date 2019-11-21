@@ -22,6 +22,9 @@ export const Modal = ({
       modal: {
         zIndex: 99999999,
         padding: 0,
+        backgroundColor: '#38498F',
+        borderRadius: 10,
+        overflow: 'hidden',
       },
       closeIcon: {
         display: 'none',

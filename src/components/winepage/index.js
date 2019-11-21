@@ -2,13 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import companysInfo from './data/companys';
-import ToolBar from '../../global/toolbar/index';
 import { showNotification } from '../../customNotifications';
 
 export default function WinePage() {
     return (
         <Wrapper>
-                <ToolBar />
                 <CardsContainer>
                     <CardContainer>
                         {

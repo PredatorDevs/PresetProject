@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ToolBar from '../../global/toolbar/index';
 import { Review } from '../../global/review/index';
-import { showNotification } from '../../customNotifications';
+// import { showNotification } from '../../customNotifications';
 import companysInfo from './data/companys';
 
 class TransportPage extends React.Component {
@@ -14,7 +13,7 @@ class TransportPage extends React.Component {
             wHeigth: undefined,
             sliceIndx: 0,
             openViewer: false,
-            nameShowing: '',
+            dataToShow: {},
         }
     }
 
@@ -35,19 +34,17 @@ class TransportPage extends React.Component {
         })
     }
 
-    setName = (name) => {
-        console.log(name);
+    setData = (data) => {
         this.setState({
-            nameShowing: name,
+            dataToShow: data,
         })
         this.toggleViewer();
     }
 
     render(){
-        const { sliceIndx, openViewer, nameShowing } = this.state;
+        const { sliceIndx, openViewer, dataToShow } = this.state;
         return (
             <Wrapper>
-                <ToolBar />
                 <CardsContainer>
                     <CardContainer>
                         {
@@ -62,7 +59,7 @@ class TransportPage extends React.Component {
                                             {elm.descrip}
                                         </p>
                                         <div className='card-buttons-cont'>
-                                            <button className='button-more-info' onClick={() => this.setName(elm.nombre)}>Más información</button>
+                                            <button className='button-more-info' onClick={() => this.setData(elm)}>Más información</button>
                                         </div>
                                     </div>
                                 )
@@ -112,7 +109,7 @@ class TransportPage extends React.Component {
                 </CardsContainer>
                 <Review
                     type="company"
-                    data={nameShowing}
+                    data={dataToShow}
                     open={openViewer}
                     handleClose={this.toggleViewer}
                 />

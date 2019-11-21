@@ -62,7 +62,8 @@ function App() {
 }
 
 const Wrapper = styled.div`
-  background-color: #E54A4E;
+background-image: linear-gradient(to bottom, #E54A4E 0%, #4C181A 100%);
+  /* background-color: #E54A4E; */
   min-height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;

@@ -91,7 +91,6 @@ class Navbar extends React.Component {
         </div>
         <NavbarUserOpc>
           <div className="logo-container">
-
             <img src={Logo} alt="Logo" />
           </div>
         </NavbarUserOpc>

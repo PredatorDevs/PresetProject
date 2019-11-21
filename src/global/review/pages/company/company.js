@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { Tabs, Tab } from '../../../tabs/index';
-import { Content } from './content';
 
 export class CompanyContent extends Component {
   constructor(props) {
@@ -37,31 +36,38 @@ export class CompanyContent extends Component {
   }
 
   render() {
-    const {
-      currentTab,
-    } = this.state;
     const { data } = this.props;
-    console.log(data)
+    console.log("THIS IS DATA", data);
     return (
       <Wrapper>
-        <div className="container">
-          <div className="container__title-wrapper">
-            <p className="container__title-wrapper__label">
-                Compañía
+        <div className="container1">
+          <div className="element-info">
+            <p className="title">
+              Nombre:
             </p>
-            <p className="container__title-wrapper__title">
-              {data}
+            <p className="descrip">
+              {data.nombre}
             </p>
           </div>
-          <div className="container__tabs">
-            {this.getTabs()}
+          <div className="element-info">
+            <p className="title">
+              Descripción:
+            </p>
+            <p className="descrip">
+              {data.descrip}
+            </p>
           </div>
-          <div className="container__body">
-            <Content
-              currentTab={currentTab}
-              data={data}
-            />
-          </div>
+          
+        </div>
+        <div className="container2">
+          {
+            data.servicios.map(elm =>
+              <div className="service-element" key={elm.id}>
+                <p className="service-name">{elm.nombre}</p>
+                <p className="service-price">{`$ ${elm.precio}`}</p>
+              </div>
+            )
+          }
         </div>
       </Wrapper>
     );
@@ -69,26 +75,67 @@ export class CompanyContent extends Component {
 }
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
   min-height: 400px;
   width: 800px;
-  .container {
-    &__title-wrapper {
-      padding: 10px 20px;
-      p {
-        margin: 0;
-        padding: 0;
-      }
-      &__label {
-        font-size: 12px;
-        color: rgba(0,0,0,0.7);
-        padding-bottom: 20px;
-      }
+  .container1 {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    width: 50%;
+  }
+  .container2 {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    min-height: 100%;
+    width: 50%;
+  }
+  .element-info {
+    width: calc(80% - 20px);
+    margin: 10px;
+    .title {
+      width: 100%;
+      color: white;
+      margin: 2px;
+      font-weight: bolder;
+      font-size: 18px;
     }
-    &__body {
-      margin-top: 10px;
-      padding: 10px 20px;
-      max-height: 600px;
-      overflow-y: scroll;
+    .descrip {
+      width: 100%;
+      color: white;
+      margin: 2px;
+      font-style: italic;
+      font-size: 14px;
+    }
+  }
+  .service-element {
+    width: calc(100% - 40px);
+    background: linear-gradient(45deg, rgba(255,255,255,1) 89%, rgba(56,73,143,1) 97%);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 20px 75px 0px rgba(188,194,217,1);
+    color: #E0A500;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    .container1 {
+      width: 50%;
+      min-height: 300px;
+    }
+    .container2 {
+      width: 50%;
+      min-height: 500px;
+    }
+    .element-info {
+      width: calc(80% - 40px);
+      /* background-color: red; */
     }
   }
 `;
