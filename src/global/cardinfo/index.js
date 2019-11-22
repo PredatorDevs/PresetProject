@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 
 class CardInfo extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-        }
     }
+  }
 
-    render() {
-        const { image, title, descrip } = this.props;
-        return (
-            <Card>
-                <div className="img-cont">
-                    <img src={image} alt="cardimage" />
-                </div>
-                <div className="title-cont">
-                    <p>{title}</p>
-                </div>
-                <div className="descrip-cont">
-                    <p>{descrip}</p>
-                </div>
-            </Card>
-        )
-    }
+  render() {
+    const { image, title, descrip } = this.props;
+    return (
+      <Card>
+        <div className="img-cont">
+          <img src={image} alt="cardimage" />
+        </div>
+        <div className="title-cont">
+          <p>{title}</p>
+        </div>
+        <div className="descrip-cont">
+          <p>{descrip}</p>
+        </div>
+      </Card>
+    )
+  }
+}
+
+CardInfo.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  descrip: PropTypes.string.isRequired,
 }
 
 const Card = styled.div`

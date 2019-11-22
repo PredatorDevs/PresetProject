@@ -4,16 +4,34 @@ import { Route, Switch } from 'react-router-dom';
 import ReactNotification from 'react-notifications-component'
 import './App.css';
 
-import { Navbar } from './Navbar'; // 192.168.0.12:3000
+import CategoryRoute from './helpers/categoryRoute';
+import { Navbar } from './Navbar';
+import LandPage from './pages/landpage/index';
+import CategoryPage from './pages/categorypage/index';
+import commerceCatCompData from './data/companies/commerce';
+import healthCatCompData from './data/companies/health';
+import financeCatCompData from './data/companies/finance';
+import pharmaCatCompData from './data/companies/pharma';
+import accesoriesCatCompData from './data/companies/accesories';
+import transportCatCompData from './data/companies/transport';
+import winesCatCompData from './data/companies/wines';
+import pagesData from './data/pages/pagesData';
 
-import LandPage from './components/landpage/index';
-import CommercePage from './components/commercepage/index';
-import HealthPage from './components/healthpage/index';
-import FinancePage from './components/financepage/index';
-import WinePage from './components/winepage/index';
-import PharmaPage from './components/pharmapage/index';
-import TransportPage from './components/transportpage/index';
-import AccessoryPage from './components/accessorypage/index';
+function getDataToPass(title) {
+  let data;
+  switch (title) {
+    case 'Comercio': data = commerceCatCompData; break;
+    case 'Salud': data = healthCatCompData; break;
+    case 'Finanzas': data = financeCatCompData; break;
+    case 'Vinos': data = winesCatCompData; break;
+    case 'Farmacéuticos': data = pharmaCatCompData; break;
+    case 'Transporte': data = transportCatCompData; break;
+    case 'Accesorios': data = accesoriesCatCompData; break;
+    default:
+      break;
+  }
+  return data;
+}
 
 function App() {
   return (
@@ -26,34 +44,19 @@ function App() {
             path="/"
             component={LandPage}
           />
-          <Route
-            path="/commerce"
-            component={CommercePage}
-          />
-          <Route
-            path="/health"
-            component={HealthPage}
-          />
-          <Route
-            path="/finance"
-            component={FinancePage}
-          />
-          <Route
-            path="/wine"
-            component={WinePage}
-          />
-          <Route
-            path="/pharma"
-            component={PharmaPage}
-          />
-          <Route
-            path="/transport"
-            component={TransportPage}
-          />
-          <Route
-            path="/accessory"
-            component={AccessoryPage}
-          />
+          {
+            pagesData.map(
+              (page) => (
+                <CategoryRoute
+                  key={page.id}
+                  path={page.route}
+                  component={CategoryPage}
+                  pageInformation={page}
+                  companiesData={getDataToPass(page.title)}
+                />
+              ),
+            )
+          }
         </Switch>
       </Wrapper>
       <ReactNotification />
@@ -62,8 +65,7 @@ function App() {
 }
 
 const Wrapper = styled.div`
-background-image: linear-gradient(to bottom, #E54A4E 0%, #4C181A 100%);
-  /* background-color: #E54A4E; */
+  background-image: linear-gradient(to bottom, #E54A4E 0%, #4C181A 100%);
   min-height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;

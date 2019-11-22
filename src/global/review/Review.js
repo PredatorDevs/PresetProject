@@ -7,7 +7,6 @@ import {
 } from './pages';
 
 const renderDataReviewComponent = (data, type) => {
-  console.log(data);
   if (type === 'company') {
     return (
       <CompanyContent
