@@ -59,6 +59,30 @@ class CategoryPage extends React.Component {
             ))
           }
         </div>
+        <div className="cards-section">
+          {
+            companiesData.slice((sliceIndx + 4), (sliceIndx + (4 * 2))).map((company) => (
+              <div className="card" key={company.id}>
+                <PublicityCard
+                  information={company}
+                  setDataToShow={this.setData}
+                />
+              </div>
+            ))
+          }
+        </div>
+        <div className="cards-section">
+          {
+            companiesData.slice((sliceIndx + 8), (sliceIndx + (4 * 3))).map((company) => (
+              <div className="card" key={company.id}>
+                <PublicityCard
+                  information={company}
+                  setDataToShow={this.setData}
+                />
+              </div>
+            ))
+          }
+        </div>
         <Review
           type="company"
           data={dataToShow}

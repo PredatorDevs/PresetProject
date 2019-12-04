@@ -40,7 +40,7 @@ export default [
   {
     id: uniqueId(),
     title: 'Accesorios',
-    descrip: 'Venta de artículos varios para tu hogar, oficina o establecimiento.',
+    descrip: 'Venta de artículos varios para tu hogar, oficina o establecimiento. Cuidado personal.',
     route: '/accessory',
   },
 ]

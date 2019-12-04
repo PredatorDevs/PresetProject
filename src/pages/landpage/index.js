@@ -12,9 +12,7 @@ import CardInfo from '../../global/cardinfo/index';
 class LandPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
+    this.state = { };
   }
 
   render() {
@@ -262,15 +260,15 @@ const Wrapper = styled.div`
         }
     }
 
-    @media screen and (max-width: 411px) {
-        max-width: 411px;
+    @media screen and (max-width: 472px) {
+        max-width: 472px;
         .presentation-cont { 
             flex-direction: column;
             .pre-cont-1 {
                 width: 100%;
                 img {
-                    width: 350px;
-                    height: 350px;
+                    width: 300px;
+                    height: 300px;
                 }
             }
             .pre-cont-2 {
@@ -291,6 +289,15 @@ const Wrapper = styled.div`
                         }
                     }
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 411px) {
+        max-width: 411px;
+        .content-descrip {
+            .descrip {
+                
             }
         }
     }

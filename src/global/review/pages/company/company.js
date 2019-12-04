@@ -50,7 +50,7 @@ export class CompanyContent extends Component {
               Descripción:
             </p>
             <p className="descrip">
-              {data.descrip}
+              {data.descrip !== '' ? data.descrip : 'Sin definir'}
             </p>
           </div>
           <div className="element-info">
