@@ -11,7 +11,7 @@ export default [
       {
         id: uniqueId(),
         nombre: 'Vinos de muchos sabores',
-        precio: 50,
+        precio: 10,
       },
     ],
     portada: company1Logo,
